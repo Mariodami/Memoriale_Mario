@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<!--
+====================================================================
+
+    Memoriale Mario D'Amico
+    index.html
+
+    Versione 1.0
+    Luglio 2026
+
+    Pagina principale del Memoriale.
+
+    Questo file raccoglie l'accesso ai contenuti dedicati
+    al ricordo di Mario D'Amico ed è stato progettato
+    per essere semplice, essenziale e facilmente
+    mantenibile nel tempo.
+
+====================================================================
+-->
+
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mario D'Amico</title>
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Dancing+Script:wght@600&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+    /* ==========================================================
+       IMPOSTAZIONI GENERALI
+    ========================================================== */
+
+    body{
+
+        margin:0;
+        padding:20px;
+
+        min-height:100vh;
+
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+
+        background:linear-gradient(180deg,#ffffff,#f5f5f5);
+
+        font-family:Inter,sans-serif;
+
+        text-align:center;
+
+        color:#111111;
+
+    }
+
+
+    /* ==========================================================
+       ANIMAZIONE
+    ========================================================== */
+
+    @keyframes fadeUp{
+
+        from{
+
+            opacity:0;
+            transform:translateY(15px);
+
+        }
+
+        to{
+
+            opacity:1;
+            transform:translateY(0);
+
+        }
+
+    }
+
+
+    /* ==========================================================
+       FOTO
+    ========================================================== */
+
+    .memorial-photo{
+
+        display:block;
+
+        width:200px;
+        height:278px;
+
+        object-fit:cover;
+        object-position:center;
+
+        border-radius:18px;
+
+        margin-bottom:18px;
+
+        box-shadow:0 12px 35px rgba(0,0,0,.18);
+
+        opacity:0;
+
+        animation:fadeUp 1s ease forwards;
+
+    }
+
+
+    /* ==========================================================
+       NOME
+    ========================================================== */
+
+    .name{
+
+        font-family:'Dancing Script',cursive;
+
+        font-size:60px;
+
+        margin-bottom:10px;
+
+        opacity:0;
+
+        animation:fadeUp 1s ease forwards;
+
+        animation-delay:.2s;
+
+    }
+
+
+    /* ==========================================================
+       SOTTOTITOLO
+    ========================================================== */
+
+    .sub{
+
+        color:#666666;
+
+        margin-bottom:30px;
+
+        opacity:0;
+
+        animation:fadeUp 1s ease forwards;
+
+        animation-delay:.4s;
+
+    }
+
+
+    /* ==========================================================
+       LINEA
+    ========================================================== */
+
+    .line{
+
+        width:60px;
+        height:1px;
+
+        background:#dddddd;
+
+        margin:20px 0 30px;
+
+        opacity:0;
+
+        animation:fadeUp 1s ease forwards;
+
+        animation-delay:.6s;
+
+    }
+
+
+    /* ==========================================================
+       PULSANTI
+    ========================================================== */
+
+    .btn{
+
+        width:260px;
+
+        margin:10px;
+        padding:15px;
+
+        display:inline-block;
+
+        background:#111111;
+        color:#ffffff;
+
+        border:1px solid #111111;
+
+        border-radius:12px;
+
+        text-decoration:none;
+
+        font-size:16px;
+        font-weight:600;
+
+        cursor:pointer;
+
+        transition:
+            background .25s ease,
+            border-color .25s ease,
+            transform .20s ease;
+
+        opacity:0;
+
+        animation:fadeUp 1s ease forwards;
+
+    }
+
+    .btn:nth-of-type(1){
+
+        animation-delay:.8s;
+
+    }
+
+    .btn:nth-of-type(2){
+
+        animation-delay:1s;
+
+    }
+
+    .btn:nth-of-type(3){
+
+        animation-delay:1.2s;
+
+    }
+
+    .btn:hover{
+
+        background:#2b2b2b;
+
+        border-color:#2b2b2b;
+
+        transform:translateY(-2px);
+
+    }
+    /* ==========================================================
+       LINK "HAI FOTO DA CONDIVIDERE?"
+    ========================================================== */
+
+    .photo-link{
+
+        display:block;
+
+        margin-top:24px;
+
+        font-size:14px;
+
+        color:#666666;
+
+        text-decoration:underline;
+
+        opacity:0;
+
+        animation:fadeUp 1s ease forwards;
+
+        animation-delay:1.4s;
+
+    }
+
+    .photo-link span{
+
+        font-size:12px;
+
+        color:#999999;
+
+    }
+
+
+    /* ==========================================================
+       CONTENITORE DEL FORM
+    ========================================================== */
+
+    .form-container{
+
+        width:100%;
+        max-width:700px;
+
+        margin-top:30px;
+
+        display:none;
+
+        opacity:0;
+        transform:translateY(15px);
+
+        transition:
+            opacity .5s ease,
+            transform .5s ease;
+
+    }
+
+    .form-container.show{
+
+        display:block;
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+    /* ==========================================================
+       IFRAME
+    ========================================================== */
+
+    iframe{
+
+        width:100%;
+
+        height:520px;
+
+        border:none;
+
+    }
+
+
+    /* ==========================================================
+       VERSIONE SMARTPHONE
+    ========================================================== */
+
+    @media (max-width:500px){
+
+        .name{
+
+            font-size:40px;
+
+        }
+
+        .btn{
+
+            width:90%;
+
+        }
+
+        .memorial-photo{
+
+            width:200px;
+            height:278px;
+
+        }
+
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ======================================================
+         FOTO
+    ======================================================= -->
+
+    <img
+        class="memorial-photo"
+        src="Mario.jpg"
+        alt="Mario D'Amico">
+
+
+    <!-- ======================================================
+         NOME
+    ======================================================= -->
+
+    <div class="name">
+
+        Mario D'Amico
+
+    </div>
+
+
+    <!-- ======================================================
+         SOTTOTITOLO
+    ======================================================= -->
+
+    <div class="sub">
+
+        Un ricordo che vive nel tempo
+
+    </div>
+
+
+    <!-- Linea -->
+
+    <div class="line"></div>
+    <!-- ======================================================
+         PULSANTE "RICORDAMI"
+    ======================================================= -->
+
+    <a
+        class="btn"
+        href="https://drive.google.com/file/d/1P36V2Ncf4TcDgGJAyz_SB7IQH2FKkJY8/preview"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        Ricordami
+
+    </a>
+
+
+    <!-- ======================================================
+         PULSANTE "IL PROFESSORE"
+    ======================================================= -->
+
+    <a
+        class="btn"
+        href="https://drive.google.com/file/d/1OBu7_zvBNJVqm0pMgfh_iXs-clpOHRgj/preview"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        Il Professore
+
+    </a>
+
+
+    <!-- ======================================================
+         PULSANTE "LASCIA UN RICORDO"
+    ======================================================= -->
+
+    <button
+        class="btn"
+        type="button"
+        onclick="toggleForm()">
+
+        Lascia un ricordo
+
+    </button>
+
+
+    <!-- ======================================================
+         LINK CONDIVISIONE FOTOGRAFIE
+    ======================================================= -->
+
+    <a
+        class="photo-link"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfwYEFva-R6I1XDevKIIG8WRvLwv7qadtrLKJI3JrGGIV65wA/viewform"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        Hai foto da condividere?
+        <span>(account richiesto)</span>
+
+    </a>
+
+
+    <!-- ======================================================
+         MODULO "LASCIA UN RICORDO"
+    ======================================================= -->
+
+    <div
+        class="form-container"
+        id="formBox">
+
+        <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdR8t5K9atb7STkWqru6NspNulRty15tQ_bj3lhSrrmm_kyAA/viewform?embedded=true">
+
+        </iframe>
+
+    </div>
+    <!-- ======================================================
+         SCRIPT
+    ======================================================= -->
+
+    <script>
+
+        let aperto = false;
+
+        function toggleForm() {
+
+            const box = document.getElementById("formBox");
+
+            if (!aperto) {
+
+                box.style.display = "block";
+
+                // Permette al browser di disegnare il contenitore
+                // prima di applicare l'animazione.
+                requestAnimationFrame(() => {
+
+                    box.classList.add("show");
+
+                    // Scorre dolcemente fino al modulo
+                    box.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                });
+
+                aperto = true;
+
+            } else {
+
+                box.classList.remove("show");
+
+                setTimeout(() => {
+
+                    box.style.display = "none";
+
+                }, 500);
+
+                aperto = false;
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
